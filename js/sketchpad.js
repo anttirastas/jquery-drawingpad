@@ -11,5 +11,5 @@ $(document).ready(function() {
 			$("<div></div>").css("clear","both").appendTo($container);
 		}
 	};
-	createDivs(16);
+	createDivs(64);
 });
