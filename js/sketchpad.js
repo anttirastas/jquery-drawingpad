@@ -1,5 +1,8 @@
 $(document).ready(function() {
-	/*Create container div */
+	/*Create button and container div */
+	var $button = $("<button type='button'>Click here!</button>");
+	$($button).css("float","left").appendTo('body');
+	$('<div></div>').css("clear","both").appendTo('body');
 	var $container = $("<div></div>").css("float","left");
 	$('body').append($container);
 	/* Define and call function to create 16 columns of divs in one row*/
