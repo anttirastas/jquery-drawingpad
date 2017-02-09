@@ -12,4 +12,7 @@ $(document).ready(function() {
 		}
 	};
 	createDivs(64);
+	$(".box").mouseover(function() {
+		$(this).css("background-color","yellow");
+	});
 });
