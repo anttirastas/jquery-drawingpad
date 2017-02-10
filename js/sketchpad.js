@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	/* Declare global variables */
-	var sideLength = 10;
 	var userInput = 6;
 
 
@@ -11,13 +10,15 @@ $(document).ready(function() {
 
 	
 	/* Create container div*/
-	var $container = $("<div></div>").css("float","left");
+	var $container = $("<div></div>").css("float","left").width("960px").height("960px");
+	var $cWidth = $container.width;
+	var $cHeight = $container.height;
 	$("body").append($container);
 
 	/* Define function to create divs inside container*/
-	var createDivs = function(sideLength) {	
-		for (x = 0; x < sideLength; x++) {
-			for (y = 0; y < sideLength; y++) {
+	var createDivs = function(amountBoxes) {	
+		for (x = 0; x < amountBoxes; x++) {
+			for (y = 0; y < amountBoxes; y++) {
 				$("<div></div>").addClass("box").appendTo($container);
 			}
 			$("<div></div>").css("clear","both").appendTo($container);
@@ -26,7 +27,7 @@ $(document).ready(function() {
 
 
 	/* Call the function createDivs to create a 16x16 grid upon page loading */
-	createDivs(16);
+	createDivs(userInput);
 
 
 	/* Define function to change divs to yellow when mouse hovers over them */
@@ -40,7 +41,11 @@ $(document).ready(function() {
 	$($button).click(function() {
 		$($container).empty();
 		userInput = prompt("Please enter the amount of boxes for each side of the grid");
+		var boxWidth = 960/userInput;
+		var boxHeight = 960/userInput;
 		createDivs(userInput);
+		$(".box").width(boxWidth + 'px');
+		$(".box").height(boxHeight + 'px');
 		/* Define function to change divs to yellow when mouse hovers over them */
 		$(".box").mouseover(function() {
 		$(this).css("background-color","yellow");
