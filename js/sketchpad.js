@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	/* Declare global variables */
 	var userInput = 6;
-
+	var color = "#";
 
 	/* Create button above container div */
 	var $button = $("<button type='button'>Click here!</button>");
@@ -31,8 +31,20 @@ $(document).ready(function() {
 
 
 	/* Define function to change divs to yellow when mouse hovers over them */
-	$(".box").mouseover(function() {
+/*	$(".box").mouseover(function() {
 		$(this).css("background-color","yellow");
+	}); */
+
+	$(".box").mouseover(function() {
+		var newColor = function() {
+			var letters = "0123456789ABCDEF";
+			color = "#";
+			for (var i = 0; i < 6; i++ ) {
+	    		color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		};
+		$(this).css("background-color",newColor);
 	});
 
 
@@ -40,15 +52,23 @@ $(document).ready(function() {
 	size of grid to create next */
 	$($button).click(function() {
 		$($container).empty();
-		userInput = prompt("Please enter the amount of boxes for each side of the grid");
-		var boxWidth = 960/userInput;
-		var boxHeight = 960/userInput;
+		userInput = window.prompt("Please enter the amount of boxes for each side of the grid");
+		var boxWidth = (960/userInput);
+		var boxHeight = (960/userInput);
 		createDivs(userInput);
 		$(".box").width(boxWidth + 'px');
 		$(".box").height(boxHeight + 'px');
-		/* Define function to change divs to yellow when mouse hovers over them */
+		/* Define function to change divs to random color when mouse hovers over them */
 		$(".box").mouseover(function() {
-		$(this).css("background-color","yellow");
+			var newColor = function() {
+	    		var letters = "0123456789ABCDEF";
+	    		color = "#";
+	    		for (var i = 0; i < 6; i++ ) {
+	        		color += letters[Math.floor(Math.random() * 16)];
+	    		}
+	    		return color;
+			};
+			$(this).css("background-color",newColor);
 		});
 	});
 
